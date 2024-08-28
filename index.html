@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portal da fiscalização</title>
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+</style>
+
+</head>
+
+<body>
+<div class="container">
+<div class="header">
+<img src="assets/lupa-vermelha.jfif"/>
+<p class="titulo">PORTAL DA FISCALIZAÇÃO</p>
+</div>
+
+<div class="corpo">
+<div> <a href="legislacao.html" class="img"><img src="assets/legislacao.jfif" /></a> <p class="text">LEGISLAÇÃO</p> </div>
+<div> <a href="sistemas.html" class="img"><img src="assets/sistema.jfif" class="img"/></a> <p class="text">SISTEMAS</p> </div>
+</div>
+</div>
+<footer class="footer">
+	<p>&copy; <span id="year"></span>. Todos os direitos reservados</p>
+</footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+
+</html>

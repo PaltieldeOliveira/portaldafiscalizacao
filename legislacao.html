@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portal da fiscalização</title>
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+<style>
+        .highlight {
+            background-color: yellow;
+        }
+        .content {
+            max-height: 600px; /* Aumenta a altura para simular um texto mais longo */
+            overflow-y: auto; /* Adiciona rolagem vertical se o texto for longo */
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+        .highlight-target {
+            border: 2px solid red; /* Adiciona uma borda vermelha ao redor do texto encontrado */
+            padding: 2px; /* Adiciona um pequeno padding para melhor visualização */
+        }
+</style>
+
+<script>
+
+	function deleteText() {
+		removeHighlights();
+	}	
+
+	function searchText() {
+	// Remove todas as marcações e destaques anteriores
+            removeHighlights();
+
+            // Pega o texto de busca do usuário
+            const searchText = document.getElementById('searchInput').value.trim();
+            if (searchText) {
+                const regex = new RegExp(`(${searchText})`, 'gi');
+                const content = document.getElementById('content');
+                const contentHTML = content.innerHTML;
+
+                // Substitui o texto encontrado por uma versão com a tag <mark> para destacar
+                const newHTML = contentHTML.replace(regex, '<mark class="highlight">$1</mark>');
+                content.innerHTML = newHTML;
+
+                // Encontra o primeiro elemento <mark> e faz a rolagem até ele
+                const firstHighlight = document.querySelector('mark');
+                if (firstHighlight) {
+                    firstHighlight.classList.add('highlight-target');
+                    firstHighlight.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }
+	}
+
+	function removeHighlights() {
+            // Remove a classe highlight dos elementos <mark> e remove a tag <mark> do HTML
+            document.querySelectorAll('mark').forEach(el => {
+                el.outerHTML = el.innerHTML;
+            });
+        }
+</script>
+
+</head>
+
+<body>
+
+<div class="container" id="content">
+<h1>Legislação</h1>
+
+<div class="search">
+<input type="text" id="searchInput" placeholder="Digite para pesquisar..."/>
+<button onclick="searchText()" class="button"><i class="material-icons">search</i></button>
+<button onclick="deleteText()" class="button"><i class="material-icons">delete_sweep</i></button>
+</div>
+
+<a href="https://legislacao.prefeitura.sp.gov.br" class="legis" style="background-color:#000000;">Catágolo de legislação municipal</a>
+<a href="https://legislacao.prefeitura.sp.gov.br/leis/lei-16642-de-09-de-maio-de-2017" class="legis" style="background-color:#556B2F;">Código de Obras e edificações - Lei 16.642/17</a>
+<a href="https://legislacao.prefeitura.sp.gov.br/leis/lei-16402-de-22-de-marco-de-2016" class="legis" style="background-color:#884513;">Lei de Uso e Ocupação do Solo - Lei 16.402/16</a>
+<a href="https://legislacao.prefeitura.sp.gov.br/leis/lei-15442-de-09-de-setembro-de-2011" class="legis" style="background-color:#4B0082;">Lei de Limpeza de imóveis, fechamento de terrenos não edificados e a construção e manutenção de passeios (MPL) - Lei 15.442/11</a>
+<a href="https://legislacao.prefeitura.sp.gov.br/leis/lei-14223-de-26-de-setembro-de-2006" class="legis" style="background-color:#778899;">Lei sobre a ordenação dos elementos que compõem a paisagem urbana do Município de São Paulo (Lei cidade limpa) - Lei 14.223/06</a>
+<a href="https://legislacao.prefeitura.sp.gov.br/leis/lei-13478-de-30-de-dezembro-de-2002" class="legis" style="background-color:#DC143C;">Lei sobre a organização do sistema de limpeza urbana do município de São Paulo - Lei 13.478/02</a>
+<a href="https://legislacao.prefeitura.sp.gov.br/leis/lei-17733-de-11-de-janeiro-de-2022" class="legis" style="background-color:#483D8B;">Lei sobre a implantação de estação rádio-base, e a instalação de estação rádio-base móvel e estação rádio-base de pequeno porte, no município de São Paulo - Lei 17.733/22</a>
+<a href="https://legislacao.prefeitura.sp.gov.br/leis/lei-12002-de-23-de-janeiro-de-1996" class="legis" style="background-color:#9370DB;">Lei sobre permissão de uso de passeio público fronteiriço a bares, confeitarias, restaurantes, lanchonetes e assemelhados, para colocação de toldos, mesas e cadeiras - Lei 12.002/96</a>
+<a href="https://legislacao.prefeitura.sp.gov.br/leis/decreto-58832-de-1-de-julho-de-2019" class="legis" style="background-color:#800000;">Decreto sobre permissão de uso de passeio público fronteiriço a bares, confeitarias, restaurantes, lanchonetes e assemelhados, para colocação de toldos, mesas e cadeiras - Decreto 58.832/19</a>
+<a href="https://legislacao.prefeitura.sp.gov.br/leis/lei-12260-de-11-de-dezembro-de-1996" class="legis" style="background-color:#696969;">Lei disciplinando a utilização das calçadas situadas nas proximidades das faixas de pedestres - Lei 12.260/96</a>
+<a href="https://legislacao.prefeitura.sp.gov.br/leis/lei-13614-de-02-de-julho-de-2003" class="legis" style="background-color:#FF4500;">Lei que estabelece as diretrizes para a utilização das vias públicas municipais, inclusive dos respectivos subsolo e espaço aéreo, e das obras de arte de domínio municipal, para a implantação e instalação de equipamentos de infra-estrututa urbana destinados à prestação de serviços públicos e privados - Lei 13.614/03</a>
+<a href="https://legislacao.prefeitura.sp.gov.br/leis/lei-14167-de-6-de-junho-de-2006" class="legis" style="background-color:#00CED1;">Lei sobre a cassação do auto de licença de funcionamento de lojistas e da permissão de uso de ambulantes que comercializem produtos irregulares - Lei 14.167/06</a>
+<a href="https://legislacao.prefeitura.sp.gov.br/leis/decreto-52432-de-21-de-junho-de-2011" class="legis" style="background-color:#32CD32;">Decreto sobre a cassação do auto de licença de funcionamento de lojistas e da permissão de uso de ambulantes que comercializem produtos irregulares - Decreto 52.432/11</a>
+<a href="https://legislacao.prefeitura.sp.gov.br/leis/lei-15031-de-13-de-novembro-de-2009" class="legis" style="background-color:#F0E68C;">Lei que dispensa da licença de funcionamento o exercicío das atividades não residenciais para o Microempreendedor individual - MEI - Lei 15.031/09</a>
+<a href="https://legislacao.prefeitura.sp.gov.br/leis/decreto-51044-de-23-de-novembro-de-2009" class="legis" style="background-color:#CD853F;">Decreto que dispõe sobre a licença de funcionamento o exercicío das atividades não residenciais para o Microempreendedor individual - MEI - Decreto 51.044/09</a>
+<a href="https://legislacao.prefeitura.sp.gov.br/leis/lei-9433-de-01-de-abril-de-1982" class="legis" style="background-color:#D8BFD8;">Lei estabelecendo às infrações referentes às normas especiais de segurança de uso - Lei 9.433/82</a>
+<a href="https://legislacao.prefeitura.sp.gov.br/leis/lei-10072-de-10-de-junho-de-1986" class="legis" style="background-color:#A0522D;">Lei sobre a instalação de bancas de jornais e revistas em logradouros públicos - Lei 10.072/86</a>
+<a href="https://legislacao.prefeitura.sp.gov.br/leis/decreto-22709-de-05-de-setembro-de-1986" class="legis" style="background-color:#C71585;">Decreto sobre a instalação de bancas de jornais e revistas em logradouros públicos - Decreto 22.709/86</a>
+<a href="https://legislacao.prefeitura.sp.gov.br/leis/lei-15947-de-26-de-dezembro-de-2013" class="legis" style="background-color:#00008B;">Lei sobre as regras para comercialização de alimentos em vias e áreas públicas - comida de rua - Lei 15.947/13</a>
+<a href="https://legislacao.prefeitura.sp.gov.br/leis/decreto-48172-de-6-de-marco-de-2007" class="legis" style="background-color:#B22222;">Decreto sobre o funcionamento das feiras livres no Município de São Paulo - Decreto 48.172/07</a>
+<a href="https://legislacao.prefeitura.sp.gov.br/leis/decreto-48832-de-17-de-outubro-de-2007" class="legis" style="background-color:#6B8E23;">Decreto que fixa normas de procedimento para a defesa da posse de bens imóveis municipais - Decreto 48.832/07</a>
+<a href="https://legislacao.prefeitura.sp.gov.br/leis/decreto-49969-de-28-de-agosto-de-2008" class="legis" style="background-color:#B0E0E6;">Decreto que regulamenta a expedição de Auto de licença de funcionamento, Alvará de Funcionamento, Alvará de Autorização para eventos públicos e temporários e Termo de Consulta de Funcionamento - Decreto 49.969/08</a>
+<a href="https://legislacao.prefeitura.sp.gov.br/leis/decreto-57443-de-10-de-novembro-de-2016" class="legis" style="background-color:#4169E1;">Decreto sobre aspectos relacionados à fiscalização de posturas no município de São Paulo - Decreto 57.443/16</a>
+<a href="https://legislacao.prefeitura.sp.gov.br/leis/decreto-53414-de-17-de-setembro-de-2012" class="legis" style="background-color:#B0C4DE;">Decreto sobre a implantação do Sistema de Gerenciamento de Fiscalização - SGF - Decreto 53.414/12</a>
+<a href="https://legislacao.prefeitura.sp.gov.br/leis/decreto-60581-de-27-de-setembro-de-2021" class="legis" style="background-color:#8B008B;">Decreto sobre o controle de ruídos na execução das obras de construção civil no Município de São Paulo - Decreto 60.581/21</a>
+<a href="https://legislacao.prefeitura.sp.gov.br/leis/lei-18082-de-19-de-janeiro-de-2024" class="legis" style="background-color:#DDA0DD;">Lei sobre a obrigatoriedade de instalação de placa de instruções acerca da existência, função e utilização do botão de pânico nos casos de emergência, na extremidade de acesso às escadas rolantes e/ou esteiras das edificações que abriguem estabelecimentos comerciais - Lei 18.082/24</a>
+<a href="https://legislacao.prefeitura.sp.gov.br/leis/decreto-10878-de-7-de-fevereiro-de-1974" class="legis" style="background-color:#DCDCDC;">Decreto que institui normas especiais para a segurança dos edifícios, a serem observadas na elaboração dos projetos e na execução, bem como no equipamento e no funcionamento, e dispõe ainda sobre sua aplicação em caráter prioritário - Decreto 10.878/74</a>
+<a href="https://legislacao.prefeitura.sp.gov.br/leis/lei-16312-de-17-de-novembro-de-2015" class="legis" style="background-color:#F08080;">Lei sobre a obrigatoriedade de manutenção de uma brigada profissional, composta por bombeiros civis, nos estabelecimentos que menciona - Lei 16.312/15</a>
+<a href="https://legislacao.prefeitura.sp.gov.br/leis/decreto-58168-de-28-de-marco-de-2018" class="legis" style="background-color:#6495ED;">Decreto sobre a obrigatoriedade de manutenção de uma brigada profissional, composta por bombeiros civis, nos estabelecimentos que menciona - Decreto 58.168/18</a>
+<a href="https://legislacao.prefeitura.sp.gov.br/leis/lei-13050-de-16-de-agosto-de-2000" class="legis" style="background-color:#CD5C5C;">Lei que disciplina a comercialização de CDs irregulares (falsificados) nos estabelecimentos que especifica - Lei 13.050/00</a>
+<a href="https://legislacao.prefeitura.sp.gov.br/leis/lei-11380-de-17-de-junho-de-1993" class="legis" style="background-color:#D2B48C;">Lei que dispõe sobre a execução de obras nos terrenos erodidos e erodíveis e sobre a exigência de alvará para movimento de terra - Lei 11.380/93</a>
+<a href="https://legislacao.prefeitura.sp.gov.br/leis/lei-16439-de-12-de-maio-de-2016" class="legis" style="background-color:#002366;">Lei que dispõe sobre a restrição à circulação em vilas, ruas sem saída e ruas sem impacto no trânsito local - Lei 16.439/16</a>
+<a href="https://legislacao.prefeitura.sp.gov.br/leis/decreto-56985-de-12-de-maio-de-2016" class="legis" style="background-color:#6A5ACD;">Decreto que dispõe sobre a restrição à circulação em vilas, ruas sem saída e ruas sem impacto no trânsito local - Decreto 56.985/16</a>
+<a href="https://legislacao.prefeitura.sp.gov.br/leis/lei-15429-de-26-de-agosto-de-2011" class="legis" style="background-color:#8E6F8F;">Lei que dispõe sobre a restrição do uso de telefone móvel no interior das agências bancárias e similares no município de São Paulo - Lei 15.429/11</a>
+<a href="https://legislacao.prefeitura.sp.gov.br/leis/decreto-55190-de-6-de-junho-de-2014" class="legis" style="background-color:#C06C6C;">Decreto que dispõe sobre a restrição do uso de telefone móvel no interior das agências bancárias e similares no município de São Paulo - Decreto 55.190/14</a>
+<a href="https://legislacao.prefeitura.sp.gov.br/leis/lei-13372-de-11-de-junho-de-2002" class="legis" style="background-color:#7CFC00;">Lei que obriga todas as edificações de acesso público e que tenham portas com detector de metais ou dispositivos antifurto a exibir aviso sobre os riscos do equipamento para portadores de marca-passo - Lei 13.372/02</a>
+<a href="https://legislacao.prefeitura.sp.gov.br/leis/decreto-46995-de-13-de-fevereiro-de-2006" class="legis" style="background-color:#FF6347;">Decreto que obriga todas as edificações de acesso público e que tenham portas com detector de metais ou dispositivos antifurto a exibir aviso sobre os riscos do equipamento para portadores de marca-passo - Decreto 46.995/06</a>
+<a href="https://legislacao.prefeitura.sp.gov.br/leis/lei-14030-de-21-de-julho-de-2005" class="legis" style="background-color:#4F5D75;">Lei que obriga os estabelecimentos bancários a manter guarda-volumes a disposição de seus usuários, e da outras providências - Lei 14.030/05</a>
+<a href="https://legislacao.prefeitura.sp.gov.br/leis/decreto-46857-de-26-de-dezembro-de-2005" class="legis" style="background-color:#87A96B;">Decreto que obriga os estabelecimentos bancários a manter guarda-volumes a disposição de seus usuários, e da outras providências - Decreto 46.857/05</a>
+<a href="https://legislacao.prefeitura.sp.gov.br/leis/lei-13948-de-20-de-janeiro-de-2005" class="legis" style="background-color:#D6A77A;">Lei que dispõe sobre a obrigatoriedade das agências bancárias e demais estabelecimentos de crédito de colocar à disposição dos usuários pessoal suficiente no setor de caixas, para dar atendimento digno e profissional a seus clientes - Lei 13.948/05</a>
+<a href="https://legislacao.prefeitura.sp.gov.br/leis/decreto-45939-de-31-de-maio-de-2005" class="legis" style="background-color:#9E9E9E;">Decreto que dispõe sobre a obrigatoriedade das agências bancárias e demais estabelecimentos de crédito de colocar à disposição dos usuários pessoal suficiente no setor de caixas, para dar atendimento digno e profissional a seus clientes - Decreto 45.939/05</a>
+<a href="https://legislacao.prefeitura.sp.gov.br/leis/lei-16673-de-13-de-junho-de-2017" class="legis" style="background-color:#9A9A7E;">Lei que institui o estatuto do pedestre no município de São Paulo - Lei 16.673/17</a>
+<a href="https://legislacao.prefeitura.sp.gov.br/leis/decreto-59670-de-7-de-agosto-de-2020" class="legis" style="background-color:#E6B8A4;">Decreto que institui o estatuto do pedestre no município de São Paulo - Decreto 59.670/20</a>
+</div>
+
+<div class="home"><a href="index.html"><img src="assets/home.png"/></a></div>
+
+<footer class="footer">
+	<p>&copy; <span id="year"></span>. Todos os direitos reservados</p>
+</footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+
+</html>
